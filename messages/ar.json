@@ -1,5 +1,11 @@
 {
     "HomePage":{
      "header":"taks"
+    },
+    "Navbar":{
+        "home":"الصفحة الرئيسية",
+        "alerts":"نشرة الطقس",
+        "articles":"مقالات",
+        "contact":"الإتصال بنا"
     }
  }

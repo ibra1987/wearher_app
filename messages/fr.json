@@ -1,5 +1,11 @@
 {
    "HomePage":{
     "header":"Meteo"
-   }
+   },
+   "Navbar":{
+    "home":"Accueil",
+    "alerts":"Alertes Metéo",
+    "articles":"Articles",
+    "contact":"Nous contacter"
+}
 }

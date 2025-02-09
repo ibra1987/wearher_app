@@ -1,6 +1,7 @@
 {
    "HomePage":{
-    "header":"Meteo"
+    "headerPartOne":"Prévisions Météo au Maroc",
+    "headerPartTwo":"Restez informé, où que vous soyez !"
    },
    "Navbar":{
     "home":"Accueil",

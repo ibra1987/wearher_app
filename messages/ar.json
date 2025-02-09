@@ -1,6 +1,7 @@
 {
     "HomePage":{
-     "header":"taks"
+     "headerPartOne":" توقعات الطقس في المغرب  !",
+     "headerPartTwo":" ابقَ على اطلاع أينما كنت"
     },
     "Navbar":{
         "home":"الصفحة الرئيسية",

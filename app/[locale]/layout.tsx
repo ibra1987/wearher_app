@@ -2,12 +2,15 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
-import { ThemeProvider } from "@/app/_components/theme-provider";
 import Header from "../_components/header/Header";
 import "../globals.css";
+import {Readex_Pro} from "next/font/google"
 
-import AppQueryClientProvider from "../query-client-provider";
 
+const  readexPro =  Readex_Pro({
+  subsets: ["arabic"],
+  weight: ["200","300","400","600","700"],
+})
 export default async function LocaleLayout({
   children,
   params
@@ -26,22 +29,14 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale} suppressHydrationWarning>
-      <body>
+    <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
+      <body className={`${readexPro.className}`}>
         <NextIntlClientProvider messages={messages}>
-          <AppQueryClientProvider >
-            <ThemeProvider
-              attribute="class"
-              defaultTheme="system"
-              enableSystem
-              disableTransitionOnChange
-            >
-              <div className="max-w-6xl mx-auto flex flex-col min-h-screen">
+            
+              <div className="px-24 mx-auto flex flex-col min-h-screen">
                 <Header />
                 {children}
               </div>
-            </ThemeProvider>
-          </AppQueryClientProvider>
         </NextIntlClientProvider>
       </body>
     </html>

@@ -11,8 +11,8 @@ const Navbar = () => {
   const locale = useLocale()
     const t = useTranslations('Navbar');
   return (
-    <nav className="flex-1 flex justify-end">
-      <ul className={`flex justify-center items-center gap-4 ${locale === "ar" ? "flex-row-reverse" : ""} `}>
+    <nav className=" flex justify-end">
+      <ul className={`flex justify-center items-center gap-4  `}>
        {navlinks.map((link)=>(
         <li key={link.name}>
            <Link className="hover:text-muted-foreground" href={link.path}>{t(link.name)}</Link>

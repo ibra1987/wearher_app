@@ -8,6 +8,7 @@ interface GeolocationState {
 }
 
 export default function useGeolocation() {
+  
   const [locationData, setLocationData] = useState<GeolocationState>({
     loading: true,
     error: null,
@@ -15,6 +16,24 @@ export default function useGeolocation() {
   });
 
   const getLocation = () => {
+
+    // check if we have the lat and lon in the localeStorage
+    const lat = localStorage.getItem("lat")
+    const lon = localStorage.getItem("lon")
+    if(lon && lat){
+      setLocationData({
+        loading: false,
+        error: null,
+        coordinates: {
+          lat:Number(lat),
+          lon:Number(lon),
+        },
+      });
+
+      return
+    }
+
+    // get lat and long from navigator api
     if (!navigator.geolocation) {
       setLocationData((prev) => ({
         ...prev,
@@ -24,6 +43,8 @@ export default function useGeolocation() {
       return;
     }
     navigator.geolocation.getCurrentPosition((position) => {
+      localStorage.setItem("lat",position.coords.latitude.toString())
+      localStorage.setItem("lon",position.coords.longitude.toString())
       setLocationData({
         loading: false,
         error: null,
@@ -57,6 +78,8 @@ export default function useGeolocation() {
   };
 
   useEffect(()=>{getLocation()},[])
+
+  //return location data and the function to allow refresh location 
   return {
     ...locationData,
     getLocation,

@@ -15,7 +15,7 @@ class WeatherService {
     }
     private async fetchData<T>(url:string):Promise<T>{
         const response = await fetch(url,{
-            next:{revalidate:3600}
+            next:{revalidate:3600*6}
         })
 
         if(!response.ok){
@@ -32,7 +32,8 @@ class WeatherService {
             lat:lat.toString(),
             lon:lon.toString(),
             lang,
-            units:APICONFIG.DEFAULT_PARAMS.units
+            units:APICONFIG.DEFAULT_PARAMS.units,
+            exclude:"minutely,hourly,alerts"
         })
         
 

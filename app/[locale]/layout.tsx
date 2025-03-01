@@ -20,7 +20,7 @@ export default async function LocaleLayout({
 }) {
   // Ensure that the incoming `locale` is valid
   const {locale} = await params
-  if (!routing.locales.includes(locale as any)) {
+  if (!routing.locales.includes(locale as "fr" | "ar")) {
     notFound();
   }
 
@@ -33,7 +33,7 @@ export default async function LocaleLayout({
       <body className={`${readexPro.className}`}>
         <NextIntlClientProvider messages={messages}>
             
-              <div className="px-4  md:px-12 lg:px-24 mx-auto flex flex-col min-h-screen">
+              <div className="px-2  md:px-4 lg:px-8 xl:px-24 mx-auto flex flex-col min-h-screen">
                 <Header />
                 {children}
               </div>

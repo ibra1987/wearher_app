@@ -1,7 +1,8 @@
 {
    "HomePage":{
     "headerPartOne":"Prévisions Météo au Maroc",
-    "headerPartTwo":"Restez informé, où que vous soyez !"
+    "headerPartTwo":"Restez informé, où que vous soyez !",
+    "headerToday":"Météo Aujourd'hui"
    },
    "Navbar":{
     "home":"Accueil",

@@ -3,7 +3,7 @@
 
 
 export const APICONFIG = {
-    BASE_URL:"https://api.openweathermap.org/data/2.5",
+    BASE_URL:"https://api.openweathermap.org/data/3.0/onecall",
     GEO_URL :"https://api.openweathermap.org/geo/1.0" ,
     API_KEY:process.env.WEATHER_API_KEY!,
     DEFAULT_PARAMS:{

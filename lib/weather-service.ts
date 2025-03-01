@@ -1,17 +1,17 @@
-import { Coordinates, ForecastData, GeocodingResponse, WeatherData } from "@/types"
+import { Coordinates, ForecastData, GeocodingResponse, WeatherResponse } from "@/types"
 import { APICONFIG } from "./api-config"
 
 
 
 class WeatherService {
 
-    private createUrl(endoint:string,params:Record<string,string |number>){
+    private createUrl(endpoint:string,params:Record<string,string |number>){
         const searchParams = new URLSearchParams({
             appid:APICONFIG.DEFAULT_PARAMS.appid,
             ...params
         })
 
-        return `${endoint}?${searchParams.toString()}`
+        return `${endpoint}${searchParams.toString()}`
     }
     private async fetchData<T>(url:string):Promise<T>{
         const response = await fetch(url,{
@@ -19,6 +19,7 @@ class WeatherService {
         })
 
         if(!response.ok){
+            console.log(response)
             throw new Error(`Could not fetch data:${response.statusText}`)
         }
 
@@ -26,8 +27,8 @@ class WeatherService {
 
 
     }
-    async getCurrentWeather({lat, lon}:Coordinates,lang:string):Promise<WeatherData>{
-        const url = this.createUrl(`${APICONFIG.BASE_URL}/weather`,{
+    async getCurrentWeather({lat, lon}:Coordinates,lang:string):Promise<WeatherResponse>{
+        const url = this.createUrl(`${APICONFIG.BASE_URL}?`,{
             lat:lat.toString(),
             lon:lon.toString(),
             lang,
@@ -35,7 +36,7 @@ class WeatherService {
         })
         
 
-        return this.fetchData<WeatherData>(url)
+        return this.fetchData<WeatherResponse>(url)
 
     }
     async getForecast({lat, lon}:Coordinates):Promise<ForecastData>{
@@ -58,6 +59,16 @@ class WeatherService {
         
 
         return this.fetchData<GeocodingResponse[]>(url)
+    }
+
+    async getWeatherByCityId(id:number):Promise<WeatherResponse>{
+        const url = this.createUrl(`${APICONFIG.BASE_URL}?id=${id}`,{
+            units:APICONFIG.DEFAULT_PARAMS.units,
+            
+        })
+        console.log(url)
+    
+        return this.fetchData<WeatherResponse>(url)
     }
 
 }

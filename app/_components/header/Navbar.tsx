@@ -1,15 +1,14 @@
 import { navlinks } from "@/contants";
 import { Link } from "@/i18n/routing";
-import { useLocale, useTranslations } from "next-intl";
+import {  getTranslations } from "next-intl/server";
 
 
 
 
 
 
-const Navbar = () => {
-  const locale = useLocale()
-    const t = useTranslations('Navbar');
+const Navbar = async () => {
+    const t = await getTranslations('Navbar');
   return (
     <nav className=" flex justify-end">
       <ul className={`flex justify-center items-center gap-4  `}>

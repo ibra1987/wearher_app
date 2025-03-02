@@ -1,3 +1,4 @@
+import { citiesWithCoords } from "@/assets/main-cities-with-coords";
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
 
@@ -13,3 +14,16 @@ export function formatDate(date:Date, locale:string) {
     year: "numeric"
   }).format(date);
 }
+
+
+
+export function getCityName(lat: number, lon: number) {
+  const city = citiesWithCoords.find(
+    (city) => city.lat === lat && city.lon === lon
+  );
+  if (!city) {
+    return null;
+  }
+
+  return city.name;
+};

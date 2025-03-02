@@ -1,20 +1,14 @@
 "use client";
 
-import useGeolocation from "@/app/hooks/useGeolocation";
 import { citiesWithCoords } from "@/assets/main-cities-with-coords";
 import { getMainCitiesCurrentData } from "@/lib/fetchData";
-import { WeatherData, WeatherResponse } from "@/types";
-import { CloudSun, Droplets, Thermometer } from "lucide-react";
-import { useLocale } from "next-intl";
-import { useEffect, useState, useCallback } from "react";
+import { WeatherResponse } from "@/types";
+import { CloudSun, Droplets, Thermometer, Wind } from "lucide-react";
+import { useEffect, useState } from "react";
 
 const WeatherToday = () => {
-  const lang = useLocale();
-  const [weatherData, setWeatherData] = useState<WeatherResponse | null>(null);
   const [data, setData] = useState<null | WeatherResponse[]>([]);
-
-  // Get user's location
-  const { coordinates, error, loading } = useGeolocation();
+  const  [error,setError]=useState("")
 
   const getCityName = (lat: number, lon: number) => {
     const city = citiesWithCoords.find(
@@ -29,8 +23,11 @@ const WeatherToday = () => {
   useEffect(() => {
     getMainCitiesCurrentData()
       .then((res) => setData(res as null | WeatherResponse[]))
-      .catch((error) => console.log(error));
-    console.log(data);
+      .catch((error) => {
+        console.log(error)
+        setError("Une erreur est survenue.")
+      });
+    
   }, []);
 
   return (
@@ -38,10 +35,10 @@ const WeatherToday = () => {
       {data?.map((cityData, index) =>
         cityData ? (
           <div
-            className="w-full bg-gray-50 border flex flex-col gap-4 rounded shadow-md py-10 px-1  justify-center  items-start "
+            className="w-full   flex flex-col gap-4 rounded  py-10 px-1  justify-center  items-start "
             key={cityData ? `${cityData.lat}-${cityData.lon}` : index}
           >
-            <h3 className="w-full text-gray-700 flex justify-between items-center p-2 bg-gray-100 rounded">
+            <h3 className="w-full text-gray-700 flex justify-between items-center p-2  rounded">
               <span className=" tracking-wider text-xl font-bold">{getCityName(cityData.lat, cityData.lon)}</span>{" "}
               <span className="">{cityData.current.temp}°C </span>
             </h3>
@@ -90,10 +87,23 @@ const WeatherToday = () => {
                 {cityData.daily && cityData.daily[0].humidity}%
               </span>
             </div>
+            {/**DISPLAY WIND */}
+              {cityData.daily && (
+                <div className="w-full flex justify-between px-2 ">
+                   <div className="flex justify-start items-center gap-1">
+                <Wind size={20} className="text-emerald-600" />
+                <span className="text-gray-500 text-xs">Vent</span>
+              </div>
+              <span className="text-emerald-600">
+                {cityData.daily && cityData.daily[0].wind_speed}{" "} km/h
+              </span>
+                  
+                </div>
+              )}
           </div>
         ) : null
       )}
-      {error}
+      {<div className="w-full text-red-600 bg-red-50 p-4 text-center">{error}</div>}
     </div>
   );
 };

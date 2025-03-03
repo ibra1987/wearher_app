@@ -2,7 +2,8 @@
     "HomePage":{
      "headerPartOne":" توقعات الطقس في المغرب  !",
      "headerPartTwo":" ابقَ على اطلاع أينما كنت",
-      "headerToday":"الطقس اليوم"
+      "headerToday":"الطقس اليوم",
+       "headerTomorrow":"توقعات الطقس غدا"
     },
     "Navbar":{
         "home":"الصفحة الرئيسية",

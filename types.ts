@@ -1,9 +1,13 @@
+import { TcpNetConnectOpts } from "net";
+import { NextResponse } from "next/server";
+
 export interface Coordinates {
     lat: number;
     lon: number;
   }
   
   export interface GeocodingResponse {
+    distance: number;
     name: string;
     local_names?: Record<string, string>;
     lat: number;
@@ -167,5 +171,15 @@ export interface Coordinates {
     end: number;
     description: string;
     tags: string[];
+  }
+
+
+  //server response 
+  
+ export type ApiResponse<T> = Promise<NextResponse<T>>
+  export interface IServerResponse<T> {
+       data?:T,
+       status: "error" | "success",
+       message?:string
   }
   

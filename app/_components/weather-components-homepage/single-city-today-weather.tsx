@@ -1,16 +1,21 @@
 "use client"
 import { getCityName } from "@/lib/utils";
 import { WeatherResponse } from "@/types"
+import { motion, AnimatePresence } from "framer-motion";
 
 
 
 
-const SingleCityTodayWeather = ({cityData}:{cityData:WeatherResponse}) => {
+const SingleCityTodayWeather = ({cityData,index}:{cityData:WeatherResponse,index:number}) => {
 
   
   return (
-    <div
-        
+    <AnimatePresence>
+    <motion.div
+    initial={{ opacity: 0, y: 10 }} // Start invisible & slightly below
+    animate={{ opacity: 1, y: 0 }} // Fade in & slide up
+    exit={{ opacity: 0, y: -10 }} // Fade out when removed
+    transition={{ duration: 0.05+((index)/10), ease: "easeInOut" }}
           className="w-full grid grid-cols-5 p-1 md:p-2  border-b border-b-blue-100 justify-items-center items-center"
         >
           <h3 className="w-full text-gray-600 flex justify-between items-center   rounded">
@@ -47,7 +52,8 @@ const SingleCityTodayWeather = ({cityData}:{cityData:WeatherResponse}) => {
           <span className="text-emerald-600 text-xs sm:text-sm md:text-base">
             {cityData.daily && cityData.daily[0].wind_speed} km/h
           </span>
-        </div>
+        </motion.div>
+        </AnimatePresence>
   )
 }
 

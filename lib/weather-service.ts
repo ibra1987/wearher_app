@@ -2,7 +2,10 @@ import { Coordinates, ForecastData, GeocodingResponse, WeatherResponse } from "@
 import { APICONFIG } from "./api-config"
 
 
-
+interface ServerProps {
+    coords:Coordinates,
+    lang:"fr" | "ar"
+}
 class WeatherService {
 
     private createUrl(endpoint:string,params:Record<string,string |number>){
@@ -11,7 +14,7 @@ class WeatherService {
             ...params
         })
 
-        return `${endpoint}${searchParams.toString()}`
+        return `${endpoint}?${searchParams.toString()}`
     }
     private async fetchData<T>(url:string):Promise<T>{
         const response = await fetch(url,{
@@ -27,10 +30,10 @@ class WeatherService {
 
 
     }
-    async getCurrentWeather({lat, lon}:Coordinates,lang:string):Promise<WeatherResponse>{
-        const url = this.createUrl(`${APICONFIG.BASE_URL}?`,{
-            lat:lat.toString(),
-            lon:lon.toString(),
+    async getCurrentWeather({coords,lang}:ServerProps):Promise<WeatherResponse>{
+        const url = this.createUrl(`${APICONFIG.BASE_URL}`,{
+            lat:coords.lat.toString(),
+            lon:coords.lon.toString(),
             lang,
             units:APICONFIG.DEFAULT_PARAMS.units,
             exclude:"minutely,hourly,alerts"
@@ -55,7 +58,7 @@ class WeatherService {
         const url = this.createUrl(`${APICONFIG.GEO_URL}/reverse`,{
             lat:lat.toString(),
             lon:lon.toString(),
-            limit:1
+           
         })
         
 

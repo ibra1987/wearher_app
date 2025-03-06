@@ -17,7 +17,11 @@ export default function useGeolocation() {
 
   const getLocation = () => {
 
-    // check if we have the lat and lon in the localeStorage
+   
+
+    // get lat and long from navigator api
+    if (!navigator.geolocation) {
+       // check if we have the lat and lon in the localeStorage
     const lat = localStorage.getItem("lat")
     const lon = localStorage.getItem("lon")
     if(lon && lat){
@@ -32,9 +36,6 @@ export default function useGeolocation() {
 
       return
     }
-
-    // get lat and long from navigator api
-    if (!navigator.geolocation) {
       setLocationData((prev) => ({
         ...prev,
         loading: false,
@@ -79,7 +80,7 @@ export default function useGeolocation() {
 
   useEffect(()=>{getLocation()},[])
 
-  //return location data and the function to allow refresh location 
+  //return location data and the function to allow refresh location  
   return {
     ...locationData,
     getLocation,

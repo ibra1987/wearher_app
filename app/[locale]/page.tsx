@@ -23,8 +23,9 @@ export default async function HomePage() {
        <h2 className="w-full p-4 text-2xl font-black text-gray-700 border-gray-200">
          {t("headerToday")}
        </h2>
+       
          <WeatherGridToday/>
-         <div className="w-full bg-gradient-to-tr from-blue-500 via-blue-600 to-blue-700 rounded p-16 flex flex-col gap-4 justify-center items-center ">
+         <div className="w-full bg-gradient-to-tr from-indigo-600 via-blue-500 to-indigo-800 rounded p-16 flex flex-col gap-4 justify-center items-center ">
            <h4 className="font-medium text-2xl text-white">{" Recherchez une une autre ville"}</h4>
           <SearchForm/>
          </div>

@@ -3,7 +3,7 @@ import { Coordinates, WeatherResponse } from "@/types";
 
 
 
- async function getCityCurrentData({lat,lon}:Coordinates):Promise<null | WeatherResponse>{
+ export async function getCityCurrentData({lat,lon}:Coordinates):Promise<null | WeatherResponse>{
    
     const responsePromise = await fetch("/api/current",{
         method:"POST",
@@ -22,11 +22,10 @@ import { Coordinates, WeatherResponse } from "@/types";
 }
 
 
-export async function getMainCitiesCurrentData(){
+export async function getMainCitiesCurrentData(limit:number=10){
 
     try {
         const data = Promise.all(citiesWithCoords.map(async (city)=> await getCityCurrentData({lat:city.lat,lon:city.lon})))
-         console.log("data",data)
         return data
     } catch (error) {
         throw new Error("Error fetching data")

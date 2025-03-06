@@ -6,15 +6,27 @@ import { CloudSun, Droplets, Locate, Pin, Thermometer, Wind } from "lucide-react
 import { useEffect, useState } from "react";
 import SingleCityTodayWeather from "./single-city-today-weather";
 import Link from "next/link";
-import { getCityName } from "@/lib/utils";
+import { getCityName, getLocationByCoords } from "@/lib/utils";
 import { useLocale } from "next-intl";
 
 const WeatherGridToday = () => {
   const [data, setData] = useState<null | WeatherResponse[]>([]);
+  const [visibleCities,setVisibleCities]=useState(10)
   const [error, setError] = useState("");
    const lang = useLocale()
-  
+   
+   const loadMore =()=>{
+    if(data){
+      setVisibleCities(prev=>Math.min(prev+5,data?.length))
+    }
+   }
+
+
   useEffect(() => {
+    
+   
+    
+    // weather data
     getMainCitiesCurrentData()
       .then((res) => setData(res as null | WeatherResponse[]))
       .catch((error) => {
@@ -24,6 +36,7 @@ const WeatherGridToday = () => {
   }, []);
 
   return (
+    <>
     <div className="w-full relative flex flex-col justify-start items-center bg-purple-50/45 border border-purple-100 rounded p-4 shadow-md">
       <div className="w-full h-[300px]   -top-[150px] -right-[300px] lg:-right-[600px]  absolute blur-3xl opacity-35 drop-shadow-xl -z-10 bg-gradient-to-tr from-blue-400 via-purple-600  to-blue-500">
 
@@ -55,13 +68,15 @@ const WeatherGridToday = () => {
         </div>
       </div>
       {/** dyanmic data */}
-      {data?.map((cityData, index) => (
+      {data?.slice(0,visibleCities).map((cityData, index) => (
         <Link  className="w-full flex hover:bg-slate-100"  key={cityData ? `${cityData.lat}-${cityData.lon}` : index} href={`/${lang}/ville/${getCityName(cityData.lat,cityData.lon)?.trim().toLowerCase()}`}>
-           <SingleCityTodayWeather cityData={cityData}  />
+           <SingleCityTodayWeather index={index} cityData={cityData}  />
         </Link>
       ))}
     </div>
-  );
+    <button disabled={visibleCities === data?.length} className=" bg-white rounded border border-slate-400 px-8 py-2 my-4 text-black font-medium" onClick={loadMore}>Voir Plus</button>
+
+  </>);
 };
 
 export default WeatherGridToday;

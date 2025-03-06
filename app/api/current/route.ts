@@ -8,7 +8,7 @@ import { NextResponse } from "next/server"
 export async function POST(req:Request){
 
     const body = await req.json()
-    const lang = await getLocale() ?? 'fr'
+    const lang = await getLocale() as "fr" | "ar" ?? 'fr'
     if(!body  || !Object.keys(body).length || !body.lat || !body.lon){
 
         return NextResponse.json({
@@ -17,8 +17,8 @@ export async function POST(req:Request){
         },{status:400})
     }
     try {
-      
-     const response = await weatherService.getCurrentWeather({lat:body.lat,lon:body.lon},lang)
+    const coords = {lat:body.lat,lon:body.lon}
+     const response = await weatherService.getCurrentWeather({coords,lang})
  
         return NextResponse.json(response,{
             status:200

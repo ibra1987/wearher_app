@@ -183,3 +183,9 @@ export interface Coordinates {
        message?:string
   }
   
+
+  export interface CityMetaData {
+    name:string;
+    lon:string;
+    lat:number;
+}

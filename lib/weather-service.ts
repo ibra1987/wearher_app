@@ -30,10 +30,10 @@ class WeatherService {
 
 
     }
-    async getCurrentWeather({coords,lang}:ServerProps):Promise<WeatherResponse>{
+    async getCurrentWeather(lat:number,lon:number,lang:"fr" |"ar"):Promise<WeatherResponse>{
         const url = this.createUrl(`${APICONFIG.BASE_URL}`,{
-            lat:coords.lat.toString(),
-            lon:coords.lon.toString(),
+            lat:lat.toString(),
+            lon:lon.toString(),
             lang,
             units:APICONFIG.DEFAULT_PARAMS.units,
             exclude:"minutely,hourly,alerts"

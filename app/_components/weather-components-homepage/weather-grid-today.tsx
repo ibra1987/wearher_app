@@ -69,7 +69,7 @@ const WeatherGridToday = () => {
       </div>
       {/** dyanmic data */}
       {data?.slice(0,visibleCities).map((cityData, index) => (
-        <Link  className="w-full flex hover:bg-slate-100"  key={cityData ? `${cityData.lat}-${cityData.lon}` : index} href={`/${lang}/ville/${getCityName(cityData.lat,cityData.lon)?.trim().toLowerCase()}`}>
+        <Link  className="w-full flex hover:bg-slate-100"  key={cityData ? `${cityData.lat}-${cityData.lon}` : index} href={`/${lang}/meteo/${getCityName(cityData.lat,cityData.lon)?.trim().toLowerCase()}`}>
            <SingleCityTodayWeather index={index} cityData={cityData}  />
         </Link>
       ))}

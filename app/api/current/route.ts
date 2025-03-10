@@ -18,7 +18,7 @@ export async function POST(req:Request){
     }
     try {
     const coords = {lat:body.lat,lon:body.lon}
-     const response = await weatherService.getCurrentWeather({coords,lang})
+     const response = await weatherService.getCurrentWeather(coords.lat,coords.lon,lang)
  
         return NextResponse.json(response,{
             status:200

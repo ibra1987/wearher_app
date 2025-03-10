@@ -3,6 +3,14 @@ import createNextIntlPlugin from 'next-intl/plugin';
 const withNextIntl = createNextIntlPlugin();
  
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+    images:{
+        remotePatterns:[
+            {
+                hostname:"openweathermap.org"
+            }
+        ]
+    }
+};
  
-export default withNextIntl(nextConfig);
+export default withNextIntl(nextConfig) ;

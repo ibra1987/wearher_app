@@ -1,49 +1,77 @@
 import { DailyTemperature } from "@/types"
-import { ArrowDown, ArrowUp, Moon, Sun } from "lucide-react"
+import { ArrowDown, ArrowUp, Gauge, Moon, Sun, SunDim, SunDimIcon, SunMoon } from "lucide-react"
 
 
 
 
 
 
-const Temperature = ({temp}:{temp:DailyTemperature}) => {
+const Temperature = ({temp,cssClass, itemHeaderClass}:{temp:DailyTemperature,cssClass:string,itemHeaderClass:string}) => {
   return (
-    <div className="flex flex-col gap-6  p-4 border rounded    font-bold">
-    <h3 className="text-gray-500 font-bold">{"Température"}</h3>
-    <div className="flex gap-6 justify-center items-center">
-      <div className="flex gap-2 text-red-500 justify-center items-center ">
+    <div className={`${cssClass} pb-4 md:pb-0  `}>
+    <h3 className={`${itemHeaderClass} `}>
+
+      <span>
+      {"Température"}
+      </span>
+      <span className="inline-block p-1 rounded  ">
+      <Sun   size={16}/> 
+      </span>
+     
+    </h3>
+    <div className="w-full flex">
+    <div className="w-full flex flex-col justify-center items-start p-1">
+      <div className="flex gap-1 justify-center items-center  rounded p-1  ">
         {" "}
-        <ArrowUp size={14} />{" "}
-        <span className="">
-          <sup className="mr-1">Max</sup>
-          {temp.max}°C
-        </span>
+       <span className="inline-block p-1 rounded bg-red-100 text-red-500">
+            <ArrowUp className="" size={16} />{" "}
+       </span>
+        <div className="   ">
+          <sup className="mr-1 text-xs text-slate-400">Max</sup>
+          <span className=" text-2xl ">
+          {temp.max}<sup className="">°C</sup>
+          </span>
+        </div>
       </div>
-      <div className="flex gap-2 text-blue-500 justify-center items-center ">
-        <ArrowDown size={14} />{" "}
-        <span>
-          {" "}
-          <sup className="mr-1">Min</sup> {temp.min}°C
+      <div className="flex gap-1   justify-center items-center   rounded p-1 ">
+      <span className="inline-block p-1 rounded bg-blue-100 text-blue-600 ">
+
+        <ArrowDown size={16} />{" "}
         </span>
+        <div className="   ">
+          <sup className="mr-1 text-xs text-slate-400">Min</sup>
+          <span className=" text-2xl ">
+          {temp.max} <sup className="">°C</sup>
+          </span>
+        </div>
       </div>
     </div>
-    <div className="flex gap-6 justify-center items-center ">
-      <div className="flex justify-center items-center gap-2 text-yellow-600 ">
-        {" "}
-        <Sun size={14} />{" "}
-        <span>
-          <sup className="mr-1">Mat</sup>
-          {temp.morn}°C
+    <div className="w-full flex flex-col justify-center items-start p-1">
+      <div className="flex justify-center items-center gap-1   rounded p-1 ">
+      <span className="inline-block p-1 rounded bg-yellow-160 bg-yellow-400 text-yellow-700">
+
+        <Sun size={16} />{" "}
         </span>
+        <div className="   ">
+          <sup className="mr-1 text-xs text-slate-400">Mat</sup>
+          <span className=" text-2xl ">
+          {temp.morn}<sup className="">°C</sup>
+          </span>
+        </div>
       </div>
-      <div className="flex justify-center items-center gap-2 text-gray-600 ">
-        {" "}
-        <Moon size={14} />{" "}
-        <span>
-          <sup className="mr-1">Soir</sup>
-          {temp.eve}°C
+      <div className="flex justify-center items-center gap-1    rounded p-1 ">
+      <span className="inline-block p-1 rounded bg-gray-700 text-gray-300 ">
+
+        <Moon size={16} />{" "}
         </span>
+        <div className=" text-gray-600  ">
+          <sup className="mr-1 text-xs text-slate-400">Soir</sup>
+          <span className=" text-2xl ">
+          {temp.eve}<sup className="">°C</sup>
+          </span>
+        </div>
       </div>
+    </div>
     </div>
   </div>
   )

@@ -33,7 +33,7 @@ export default async function LocaleLayout({
       <body className={`${locale === "ar" ? readexPro.className : ""}`}>
         <NextIntlClientProvider messages={messages}>
             
-              <div className="px-2  overflow-hidden md:px-4 lg:px-8 xl:px-24 mx-auto flex flex-col min-h-screen">
+              <div className="px-2  overflow-hidden md:px-4 lg:px-8 xl:px-24 mx-auto flex flex-col min-h-screen bg-slate-100">
                 <Header />
                 {children}
               </div>

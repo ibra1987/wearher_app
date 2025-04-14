@@ -37,11 +37,11 @@ const WeatherGridToday = () => {
 
   return (
     <>
-    <div className="w-full relative flex flex-col justify-start items-center bg-purple-50/45 border border-purple-100 rounded p-4 shadow-md">
-      <div className="w-full h-[300px]   -top-[150px] -right-[300px] lg:-right-[600px]  absolute blur-3xl opacity-35 drop-shadow-xl -z-10 bg-gradient-to-tr from-blue-400 via-purple-600  to-blue-500">
+    <div className="w-full relative flex flex-col justify-start items-center bg-purple-50/45 border border-purple-100 rounded p-4 shadow-md z-10">
+      <div className="w-full h-[300px]   -top-[150px] -right-[300px] lg:-right-[600px]  absolute blur-3xl opacity-35 drop-shadow-xl -z-20 bg-gradient-to-tr from-blue-400 via-purple-600  to-blue-500">
 
       </div>
-      <div className="w-full grid grid-cols-5 gap-2  justify-items-center  border-b border-b-blue-100">
+      <div className="w-full grid grid-cols-5 gap-2 justify-items-center  border-b border-b-blue-100 ">
         <div className="w-full">
           <h3 className="w-full text-gray-600 flex justify-start items-center p-2 gap-2 rounded">
           <Locate size={18}  className="text-gray-600" />
@@ -69,7 +69,7 @@ const WeatherGridToday = () => {
       </div>
       {/** dyanmic data */}
       {data?.slice(0,visibleCities).map((cityData, index) => (
-        <Link  className="w-full flex hover:bg-slate-100"  key={cityData ? `${cityData.lat}-${cityData.lon}` : index} href={`/${lang}/meteo/${getCityName(cityData.lat,cityData.lon)?.trim().toLowerCase()}`}>
+        <Link  className="w-full flex hover:bg-slate-200/50"  key={cityData ? `${cityData.lat}-${cityData.lon}` : index} href={`/${lang}/meteo/${getCityName(cityData.lat,cityData.lon)?.trim().toLowerCase()}`}>
            <SingleCityTodayWeather index={index} cityData={cityData}  />
         </Link>
       ))}

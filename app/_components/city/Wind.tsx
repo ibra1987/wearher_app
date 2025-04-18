@@ -1,9 +1,9 @@
 import { AirVent, ArrowUp, Waves, WindIcon } from "lucide-react"
 
-const Wind = ({wind,cssClass,itemHeaderClass}:{wind:{speed:number,deg:number},cssClass:string,itemHeaderClass:string}) => {
+const Wind = ({title,wind,cssClass,itemHeaderClass}:{title:string,wind:{speed:number,deg:number},cssClass:string,itemHeaderClass:string}) => {
   return (
     <div className={`${cssClass} pb-12`}>
-    <h3 className={`${itemHeaderClass}`}>{"Vent"}
+    <h3 className={`${itemHeaderClass}`}>{title}
     <span className="inline-block p-1 rounded ">
       <WindIcon   size={16}/> 
       </span>

@@ -1,10 +1,12 @@
 import { Gauge } from "lucide-react";
 
 const Pressure = ({
+  title,
   pressure,
   cssClass,
   itemHeaderClass,
 }: {
+  title:string,
   pressure: number;
   cssClass: string;
   itemHeaderClass: string;
@@ -12,7 +14,7 @@ const Pressure = ({
   return (
     <div className={`${cssClass} pb-12 md:pb-0`}>
       <h3 className={`${itemHeaderClass}`}>
-        <span>{"Préssion"}</span>
+        <span>{title}</span>
 
         <span className="inline-block p-1 rounded  ">
           <Gauge size={16} />

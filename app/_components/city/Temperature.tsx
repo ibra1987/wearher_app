@@ -1,18 +1,18 @@
 import { DailyTemperature } from "@/types"
-import { ArrowDown, ArrowUp, Gauge, Moon, Sun, SunDim, SunDimIcon, SunMoon } from "lucide-react"
+import { ArrowDown, ArrowUp, Moon, Sun } from "lucide-react"
 
 
 
 
 
 
-const Temperature = ({temp,cssClass, itemHeaderClass}:{temp:DailyTemperature,cssClass:string,itemHeaderClass:string}) => {
+const Temperature = ({temp,cssClass,title, itemHeaderClass}:{title:string,temp:DailyTemperature,cssClass:string,itemHeaderClass:string}) => {
   return (
     <div className={`${cssClass} pb-4 md:pb-0  `}>
     <h3 className={`${itemHeaderClass} `}>
 
       <span>
-      {"Température"}
+      {title}
       </span>
       <span className="inline-block p-1 rounded  ">
       <Sun   size={16}/> 

@@ -7,7 +7,6 @@ import { getMainCitiesCurrentData } from "@/lib/fetchData";
 import { WeatherResponse } from "@/types";
 import { CloudSun, Droplets, Locate, Pin, Thermometer, Wind } from "lucide-react";
 import { useEffect, useState } from "react";
-import SingleCityTodayWeather from "./single-city-today-weather";
 import Link from "next/link";
 import { getCityName } from "@/lib/utils";
 import { useLocale } from "next-intl";
@@ -29,7 +28,7 @@ const WeatherGridTomorrow = () => {
 
   return (
     <div className="w-full relative flex flex-col justify-start items-center bg-purple-50/45 border border-purple-100 rounded p-4 shadow-md">
-     
+      {error && error}
       <div className="w-full grid grid-cols-5 gap-2 justify-items-center  border-b border-b-blue-100">
         <div className="w-full">
           <h3 className="w-full text-gray-600 flex justify-start items-center p-2 gap-2 rounded">

@@ -2,11 +2,11 @@
 
 import { getMainCitiesCurrentData } from "@/lib/fetchData";
 import { WeatherResponse } from "@/types";
-import { CloudSun, Droplets, Locate, Pin, Thermometer, Wind } from "lucide-react";
+import { CloudSun, Droplets, Locate, Thermometer, Wind } from "lucide-react";
 import { useEffect, useState } from "react";
 import SingleCityTodayWeather from "./single-city-today-weather";
 import Link from "next/link";
-import { getCityName, getLocationByCoords } from "@/lib/utils";
+import { getCityName } from "@/lib/utils";
 import { useLocale } from "next-intl";
 
 const WeatherGridToday = () => {

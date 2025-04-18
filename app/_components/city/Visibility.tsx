@@ -1,10 +1,12 @@
 import { Eye } from "lucide-react";
 
 const Visibility = ({
+  title,
   visibility,
   cssClass,
   itemHeaderClass,
 }: {
+  title:string,
   visibility: number;
   cssClass: string;
   itemHeaderClass: string;
@@ -12,7 +14,7 @@ const Visibility = ({
   return (
     <div className={`${cssClass} pb-12`}>
       <h3 className={`${itemHeaderClass}`}>
-        {"Visibilité"}
+        {title}
         <span className="inline-block p-1 rounded ">
           <Eye size={16} />
         </span>

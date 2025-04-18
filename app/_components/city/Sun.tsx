@@ -1,10 +1,12 @@
 import { SunMoon, Sunrise, Sunset } from "lucide-react";
 
 const Sun = ({
+  title,
   sunInfo,
   cssClass,
   itemHeaderClass
 }: {
+  title:{levee:string,couchee:string},
   sunInfo: { sunrise: number; sunset: number };
   cssClass: string;
   itemHeaderClass:string
@@ -12,7 +14,7 @@ const Sun = ({
   return (
     <div className={`${cssClass}`}>
       <h3 className={`${itemHeaderClass}`}>
-        <span>{"lever/Coucher du soleil"}</span>
+        <span>{title.levee+"/"+title.couchee}</span>
 
         <span className="inline-block p-1 rounded ">
           <SunMoon size={16} />

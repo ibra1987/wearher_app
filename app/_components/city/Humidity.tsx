@@ -1,10 +1,12 @@
 import { Droplets } from "lucide-react";
 
 const Humidity = ({
+  title,
   humidity,
   cssClass,
   itemHeaderClass
 }: {
+  title:string,
   humidity: number;
   cssClass: string;
   itemHeaderClass: string;
@@ -12,7 +14,7 @@ const Humidity = ({
   return (
     <div className={`${cssClass} pb-12 `}>
       <h3 className={`${itemHeaderClass}`} >
-        <span>{"Humidité"}</span>
+        <span>{title}</span>
         <span className="inline-block p-1 rounded ">
           <Droplets size={16} />
         </span>

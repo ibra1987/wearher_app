@@ -16,7 +16,7 @@ export async function GET(req:Request){
             status:200
         })
         
-    } catch (error:any) {
+    } catch (error:unknown) {
         return NextResponse.json({
             error:error && typeof error === "object" && "message" in error ? error.message : "Something went wrong"
         })

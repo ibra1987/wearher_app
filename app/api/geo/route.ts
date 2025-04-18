@@ -26,10 +26,11 @@ export async function POST(req:Request):ApiResponse<IServerResponse<GeocodingRes
 
     
         
-    } catch (error) {
+    } catch (error:unknown) {
         return NextResponse.json({
             status:"error",
-            message:"Something went wrong"
+            message:error && typeof error === "object" && "message" in error ? error.message as string : "an error occured" ,
+
         },{status:500})
     }
 }

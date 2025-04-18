@@ -22,13 +22,13 @@ import { Coordinates, WeatherResponse } from "@/types";
 }
 
 
-export async function getMainCitiesCurrentData(limit:number=10){
+export async function getMainCitiesCurrentData(){
 
     try {
         const data = Promise.all(citiesWithCoords.map(async (city)=> await getCityCurrentData({lat:city.lat,lon:city.lon})))
         return data
-    } catch (error) {
-        throw new Error("Error fetching data")
+    } catch (error:unknown) {
+        throw new Error(error as string ?? "Error fetching data")
     }
 
 }

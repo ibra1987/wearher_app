@@ -26,7 +26,7 @@ export async function POST(req:Request){
 
         
         
-    } catch (error:any) {
+    } catch (error:unknown) {
         console.log(error)
         return NextResponse.json({
             error:error && typeof error === "object" && "message" in error ? error.message : "Something went wrong"

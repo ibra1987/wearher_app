@@ -16,7 +16,8 @@ export async function POST(req:Request):ApiResponse<IServerResponse<string>>{
        
             return NextResponse.json({status:"success",data:response})
         
-    } catch (error:any) {
-        return NextResponse.json({status:"error",message:error.message ?? error})
+    } catch (error:unknown) {
+        return NextResponse.json({status:"error",      message:error && typeof error === "object" && "message" in error ? error.message as string : "an error occured" ,
+        })
     }
 }

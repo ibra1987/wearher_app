@@ -52,7 +52,7 @@ export function getMostAccurateLocation(userLat: number, userLon: number, locati
   }
 
   return locations.reduce((closest, location) => {
-      let distance = Math.hypot(userLat - location.lat, userLon - location.lon);
+      const distance = Math.hypot(userLat - location.lat, userLon - location.lon);
       return !closest || distance < closest.distance 
           ? { ...location, distance } 
           : closest;

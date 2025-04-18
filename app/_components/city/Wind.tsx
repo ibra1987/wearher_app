@@ -1,4 +1,4 @@
-import { AirVent, ArrowUp, Waves, WindIcon } from "lucide-react"
+import {  ArrowUp, Waves, WindIcon } from "lucide-react"
 
 const Wind = ({title,wind,cssClass,itemHeaderClass}:{title:string,wind:{speed:number,deg:number},cssClass:string,itemHeaderClass:string}) => {
   return (

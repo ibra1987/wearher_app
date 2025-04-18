@@ -2,10 +2,6 @@ import { Coordinates, ForecastData, GeocodingResponse, WeatherResponse } from "@
 import { APICONFIG } from "./api-config"
 
 
-interface ServerProps {
-    coords:Coordinates,
-    lang:"fr" | "ar"
-}
 class WeatherService {
 
     private createUrl(endpoint:string,params:Record<string,string |number>){

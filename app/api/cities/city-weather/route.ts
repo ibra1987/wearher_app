@@ -29,10 +29,10 @@ export async function POST(
     if (!weatherData) throw new Error("Failed to fetch data");
     console.log(weatherData);
     return NextResponse.json({ status: "success", data: weatherData });
-  } catch (error: any) {
+  } catch (error: unknown) {
     return NextResponse.json({
       status: "error",
-      message: error.message ?? error.toString(),
+      message:error && typeof error === "object" && "message" in error ? error.message as string : "an error occured" ,
     });
   }
 }

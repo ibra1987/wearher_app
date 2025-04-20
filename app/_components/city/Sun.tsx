@@ -20,13 +20,13 @@ const Sun = ({
           <SunMoon size={16} />
         </span>
       </h3>
-      <div className="w-full flex flex-col  gap-2 justify-center items-center  p-3 text-orange-600">
-        <div className="flex justify-start items-center gap-2  ">
-          <span className="inline-block p-1 rounded bg-orange-100 ">
+      <div className="w-full h-full flex items-center justify-between p-2 ">
+        <div className="w-full flex justify-start items-center gap-2 px-2  ">
+          <span className="inline-block p-1 rounded bg-orange-100 text-orange-600  ">
             <Sunrise size={16} />
           </span>
           <span>
-            <span className="text-2xl ">
+            <span className=" ">
             {new Date(sunInfo.sunrise * 1000).toLocaleTimeString("fr-FR", {
               timeZone: "GMT",
             })}
@@ -34,13 +34,13 @@ const Sun = ({
            
           </span>
         </div>
-        <div className="flex justify-start items-center gap-2 text-gray-700">
+        <div className="w-full flex justify-start items-center gap-2 ml-4 text-gray-600">
           <span className="inline-block p-1 rounded bg-gray-700 text-yellow-300 ">
             <Sunset size={16} />{" "}
           </span>
           <div>
         
-            <span className=" text-2xl  ">
+            <span className="   ">
               {new Date(sunInfo.sunset * 1000).toLocaleTimeString("fr-Fr", {
                 timeZone: "GMT",
               })}

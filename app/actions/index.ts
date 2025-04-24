@@ -69,7 +69,7 @@ export async function getCityWeatherData(city:string):Promise<IServerResponse<We
 export async function getCityForecast(city:string):Promise<IServerResponse<ForecastData | string>> {
     const lang = await getLocale() as "fr" | "ar" ?? "fr"
 
-    let cityMetaData = citiesWithCoords.find((cityData) => cityData.name.trim().toLowerCase() === city.trim().toLowerCase())
+    const cityMetaData = citiesWithCoords.find((cityData) => cityData.name.trim().toLowerCase() === city.trim().toLowerCase())
 
    
     

@@ -33,7 +33,16 @@ async function CityPage({ params }: CityPageProps) {
   const weekForecast = weatherData.data.daily
   const formattedCity = city.charAt(0).toUpperCase() + city.slice(1);
  
-  
+  const setDate = (days:number)=>{
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + days);
+    
+    const dd = String(tomorrow.getDate()).padStart(2, "0");
+    const mm = String(tomorrow.getMonth() + 1).padStart(2, "0"); 
+    
+    const formattedDate = `${dd}-${mm}`;
+    return formattedDate
+  }
  
 
   return (
@@ -115,7 +124,7 @@ async function CityPage({ params }: CityPageProps) {
     <h2 className="text-2xl font-black  "> {t1("next15Days")}</h2>
       </div>
       {weekForecast && weekForecast.map((dayData, index) => (
-        <DailyForecast dayData={dayData} index={index}/>
+        <DailyForecast  key={setDate(0)} dayDate={setDate(index+2)} dayData={dayData} index={index}/>
       ))}
   </section>
   </div>

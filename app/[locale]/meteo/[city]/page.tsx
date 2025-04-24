@@ -124,7 +124,7 @@ async function CityPage({ params }: CityPageProps) {
     <h2 className="text-2xl font-black  "> {t1("next15Days")}</h2>
       </div>
       {weekForecast && weekForecast.map((dayData, index) => (
-        <DailyForecast  key={setDate(0)} dayDate={setDate(index+2)} dayData={dayData} index={index}/>
+        <DailyForecast  key={setDate(0)} dayDate={setDate(index+2)} dayData={dayData} />
       ))}
   </section>
   </div>

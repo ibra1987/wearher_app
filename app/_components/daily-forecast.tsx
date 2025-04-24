@@ -10,7 +10,7 @@ import { useState } from "react";
 
 
 
-const DailyForecast = ({dayData,index,key,dayDate}:{dayDate:string,dayData:DailyWeather,index:number,key:unknown}) => {
+const DailyForecast = ({dayData,key,dayDate}:{dayDate:string,dayData:DailyWeather,key:unknown}) => {
   const [isOpen,setIsOpen]=useState(false)
  
   return (

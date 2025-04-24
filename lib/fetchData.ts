@@ -1,4 +1,4 @@
-import { citiesWithCoords } from "@/assets/main-cities-with-coords";
+import { citiesWithCoords } from "@/assets/main-cities-coords";
 import { Coordinates, WeatherResponse } from "@/types";
 
 

@@ -1,4 +1,4 @@
-import { citiesWithCoords } from "@/assets/main-cities-with-coords";
+import { citiesWithCoords } from "@/assets/main-cities-coords";
 import { Coordinates, GeocodingResponse, IServerResponse } from "@/types";
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"

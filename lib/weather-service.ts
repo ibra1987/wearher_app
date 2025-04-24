@@ -16,12 +16,11 @@ class WeatherService {
         const response = await fetch(url,{
             next:{revalidate:3600*6}
         })
-
+         console.log(response)
         if(!response.ok){
             console.log(response)
             throw new Error(`Could not fetch data:${response.statusText}`)
         }
-
         return response.json()
 
 
@@ -39,11 +38,12 @@ class WeatherService {
         return this.fetchData<WeatherResponse>(url)
 
     }
-    async getForecast({lat, lon}:Coordinates):Promise<ForecastData>{
+    async getForecast({lat, lon}:Coordinates,lang:"fr" | "ar"):Promise<ForecastData>{
         const url = this.createUrl(`${APICONFIG.BASE_URL}/forecast`,{
             lat:lat.toString(),
             lon:lon.toString(),
-            units:APICONFIG.DEFAULT_PARAMS.units
+            units:APICONFIG.DEFAULT_PARAMS.units,
+            lang
         })
         
 

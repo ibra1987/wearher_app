@@ -12,7 +12,6 @@ export async function POST(
   req: Request
 ): ApiResponse<IServerResponse<WeatherResponse | string>> {
   try {
-    console.log("hit")
     const body = (await req.json()) as {
       lat: string;
       lon: string;

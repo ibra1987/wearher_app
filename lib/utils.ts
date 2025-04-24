@@ -31,7 +31,7 @@ export function getCityName(lat: number, lon: number) {
 
 export async function getLocationByCoords({lat,lon}:Coordinates):Promise<IServerResponse<GeocodingResponse>>{
 
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/geo`,{
+    const response = await fetch(`/api/geo`,{
       headers:{
         "Content-Type":"application/json"
       },

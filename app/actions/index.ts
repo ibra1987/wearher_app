@@ -43,7 +43,7 @@ export async function getCityWeatherData(city:string):Promise<IServerResponse<We
         await fs.writeFile(filePath,JSON.stringify(newCitiesData,null,2),"utf-8")
     }
     
-       const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/cities/city-weather`,{
+       const response = await fetch(`/api/cities/city-weather`,{
                 body:JSON.stringify({lat:cityMetaData.lat,lon:cityMetaData.lon,lang}),
                 method:"POST",  
                 next:{revalidate:21600},
@@ -73,7 +73,7 @@ export async function getCityForecast(city:string):Promise<IServerResponse<Forec
 
    
     
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/forecast`,{
+    const response = await fetch(`/api/forecast`,{
         body:JSON.stringify({lat:cityMetaData!.lat,lon:cityMetaData!.lon,lang}),
         method:"POST",  
         next:{revalidate:21600},
